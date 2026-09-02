@@ -1,0 +1,210 @@
+.sleeve {
+  min-height: 100vh;
+  padding: clamp(24px, 5vw, 64px);
+  display: flex;
+  justify-content: center;
+}
+
+.sleeve__grid {
+  width: 100%;
+  max-width: 980px;
+  display: grid;
+  grid-template-columns: minmax(280px, 380px) 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+@media (max-width: 760px) {
+  .sleeve__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sleeve__panel {
+  border-radius: 4px;
+  padding: 32px 30px;
+}
+
+/* Left panel: liner-note card, slightly rotated like a paper insert
+   tucked into the sleeve — distinct from the flush dark tracklist. */
+.sleeve__panel:not(.sleeve__panel--dark) {
+  background: var(--paper);
+  color: var(--ink);
+  transform: rotate(-0.6deg);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  border-bottom: 6px solid var(--paper-edge);
+}
+
+.sleeve__panel--dark {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--accent-deep);
+  margin: 0 0 6px;
+}
+
+.sleeve__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 1;
+  margin: 0 0 12px;
+}
+
+.sleeve__subtitle {
+  font-size: 14px;
+  line-height: 1.55;
+  color: #514a3c;
+  margin: 0 0 24px;
+  max-width: 34ch;
+}
+
+/* --- Form (left, paper panel) --- */
+
+.track-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.track-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--accent-deep);
+}
+
+.track-form__field input {
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: 10px 12px;
+  border: 1px solid #cabf9f;
+  border-radius: 2px;
+  background: #fbf8f1;
+  color: var(--ink);
+}
+
+.track-form__submit {
+  margin-top: 8px;
+  align-self: flex-start;
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  padding: 12px 22px;
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.track-form__submit:hover {
+  background: var(--accent-deep);
+}
+
+/* --- Tracklist (right, dark panel) --- */
+
+.tracklist-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 16px;
+  margin-bottom: 8px;
+}
+
+.tracklist-header h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-style: italic;
+  font-size: 22px;
+  margin: 0;
+}
+
+.tracklist-header p {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.tracklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tracklist-empty {
+  color: var(--muted);
+  font-size: 14px;
+  padding: 24px 0;
+}
+
+.track-item {
+  display: grid;
+  grid-template-columns: 32px 1fr auto 28px;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 4px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.track-item:last-child {
+  border-bottom: none;
+}
+
+.track-item__index {
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.track-item__info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.track-item__title {
+  font-size: 15px;
+  color: var(--paper);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.track-item__artist {
+  font-size: 13px;
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.track-item__duration {
+  font-size: 13px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.track-item__remove {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.track-item__remove:hover {
+  color: var(--paper);
+  background: rgba(201, 122, 62, 0.25);
+}
